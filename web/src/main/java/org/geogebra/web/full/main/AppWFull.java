@@ -144,13 +144,13 @@ import org.geogebra.web.shared.components.ComponentDialog;
 import org.geogebra.web.shared.components.DialogData;
 import org.geogebra.web.shared.ggtapi.LoginOperationW;
 import org.geogebra.web.shared.ggtapi.models.MaterialCallback;
+import org.gwtproject.timer.client.Timer;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.resources.client.ResourcePrototype;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.Location;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -746,6 +746,7 @@ public class AppWFull extends AppW implements HasKeyboard, MenuViewListener {
 		hideMenu();
 		if (isWhiteboardActive()
 				&& !getLoginOperation().isLoggedIn()) {
+			activity.markSearchOpen();
 			getGuiManager().listenToLogin();
 			getLoginOperation().showLoginDialog();
 			getGuiManager().setRunAfterLogin(() -> {
